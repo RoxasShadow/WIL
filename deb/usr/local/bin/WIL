@@ -24,7 +24,7 @@
 ##########################################################################
 
 #Configuration
-VERSION="0.7.1"
+VERSION="0.7.2"
 WILPATH="/home/$(logname)/.wil"
 WHITE="\E[1;37m"
 LGRAY="\E[0;37m"
@@ -118,8 +118,8 @@ function uprecord {
 function infosys {
 	ram_total="$(free -mto | grep Mem: | awk '{ print $2 }')"
 	ram_used="$(free -mto | grep Mem: | awk '{ print $3 }')"
-	hdd_total="$(df -h &/dev/stdout | sed -n 2p | awk '{ print $2 }')"
-	hdd_used="$(df -h &/dev/stdout  | sed -n 2p | awk '{ print $3 }')"
+	hdd_total="$(df /home -h | sed -n 2p | awk '{ print $2 }')"
+	hdd_used="$(df /home -h | sed -n 2p | awk '{ print $3 }')"
 
 	echo -e $LBLUE"$(fortune | cowsay -n -f tux.cow)\n"$Z
 	echo -e $GRAY"----------------------------------------"
